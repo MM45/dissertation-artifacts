@@ -1,0 +1,265 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+inline
+fn __memcpy_u8u8_offset(
+    reg ptr u8[XMSS_WOTS_SIG_BYTES] out,
+    reg u64 offset,
+    reg ptr u8[XMSS_N] in
+) -> reg ptr u8[XMSS_WOTS_SIG_BYTES]
+{
+    reg u64 i;
+    /* TODO: Copiar 64bits de cada vez */
+    i = 0;
+    while (i < XMSS_N) {
+        out[offset] = in[i];
+        i += 1;
+        offset += 1;
+    }
+
+    return out;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+inline
+fn __memcpy_u8u8p(
+    reg ptr u8[XMSS_N] out,
+    reg u64 in_ptr
+) -> reg ptr u8[XMSS_N]
+{
+    inline int i;
+
+    // 4 is XMSS_N/8 but having the 4 instead of XMSS_N/8 simplifies the proof
+    for i = 0 to 4 { out.[:u64 i*8] = [:u64 in_ptr + 8*i]; }
+
+    return out;
+}
+
+fn _memcpy_u8u8p(
+    reg ptr u8[XMSS_N] out,
+    reg u64 in_ptr
+) -> reg ptr u8[XMSS_N]
+{
+    out = __memcpy_u8u8p(out, in_ptr);
+    return out;
+}
+
+inline
+fn _x_memcpy_u8u8p(
+    reg ptr u8[XMSS_N] out,
+    reg u64 in_ptr
+) -> reg ptr u8[XMSS_N]
+{
+    out = out;
+    in_ptr = in_ptr;
+
+    out = _memcpy_u8u8p(out, in_ptr);
+
+    out = out;
+  
+    return out;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// same as memcpy(out_ptr + out_offset, in_ptr + in_offset, bytes)
+inline
+fn __memcpy_u8pu8p(
+    reg u64 out_ptr,
+    reg u64 out_offset,
+    reg u64 in_ptr,
+    reg u64 in_offset,
+    reg u64 bytes
+)
+{
+    // TODO: Copy u64 and only then u8
+    reg u64 i = 0;
+    
+    while(i < bytes) {
+        [:u8 out_ptr + out_offset] = [:u8 in_ptr + in_offset];
+        i += 1;
+        in_offset += 1;
+        out_offset += 1;
+    }
+}
+
+fn _memcpy_u8pu8p(
+    reg u64 out_ptr,
+    reg u64 out_offset,
+    reg u64 in_ptr,
+    reg u64 in_offset,
+    reg u64 bytes
+)
+{
+    __memcpy_u8pu8p(out_ptr, out_offset, in_ptr, in_offset, bytes);
+}
+
+inline
+fn _x__memcpy_u8pu8p(
+    reg u64 out_ptr,
+    reg u64 out_offset,
+    reg u64 in_ptr,
+    reg u64 in_offset,
+    reg u64 bytes
+)
+{
+    out_ptr = out_ptr;
+    out_offset = out_offset;
+    in_ptr = in_ptr;
+    in_offset = in_offset;
+    bytes = bytes;
+
+    _memcpy_u8pu8p(out_ptr, out_offset, in_ptr, in_offset, bytes);
+}
+
+inline
+fn __nbytes_copy_inplace(
+    reg ptr u8[XMSS_WOTS_SIG_BYTES] out,
+    reg u64 offset_out,
+    reg u64 offset_in
+) -> reg ptr u8[XMSS_WOTS_SIG_BYTES]
+{
+    inline int i;
+
+    for i=0 to XMSS_N {
+        out[offset_out + i] = out[offset_in + i];
+    }
+
+    return out;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+namespace memcpy_u8pu8_n {
+    param int INLEN = XMSS_N;
+    require "__memcpyu8pu8.jinc"
+}
+
+namespace memcpy_u8u8_N {
+    param int OUTLEN = XMSS_N;
+    param int INLEN  = XMSS_N;
+    require "__memcpy.jinc"
+}
+
+namespace memcpy_u8u8_2N {
+    param int OUTLEN = 2 * XMSS_N;
+    param int INLEN  = 2 * XMSS_N;
+    require "__memcpy.jinc"
+}
+
+namespace memcpy_u8u8_2N_N {
+    param int OUTLEN = 2 * XMSS_N;
+    param int INLEN  = XMSS_N;
+    require "__memcpy.jinc"
+}
+
+namespace memcpy_u8pu8_plen {
+    param int INLEN = XMSS_PADDING_LEN;
+    require "__memcpyu8pu8.jinc"
+}
+
+namespace memcpy_u8u8_2_ltree {
+    param int OUTLEN = 2 * XMSS_N;
+    param int INLEN  = XMSS_WOTS_SIG_BYTES;
+    require "__memcpy.jinc"
+}
+
+namespace memcpy_u8u8_3_treehash {
+    param int OUTLEN  = (XMSS_TREE_HEIGHT + 1) * XMSS_N;
+    param int INLEN   =  XMSS_N;
+    require "__memcpy.jinc"
+}
+
+namespace memcpy_u8u8_2_treehash {
+    param int OUTLEN  = 2 * XMSS_N;
+    param int INLEN   = (XMSS_TREE_HEIGHT + 1) * XMSS_N;
+    require "__memcpy.jinc"
+}
+
+namespace nbytes_copy_offset_pk {
+    param int OUTLEN = XMSS_PK_BYTES;
+    param int INLEN  = XMSS_N;
+    require "__memcpy.jinc"
+}
+
+namespace nbytes_copy_offset_sk {
+    param int OUTLEN = XMSS_SK_BYTES;
+    param int INLEN  = XMSS_N;
+    require "__memcpy.jinc"
+}
+
+fn copy_nbytes (reg ptr u8[XMSS_N] out in) -> reg ptr u8[XMSS_N] {
+    // true for the implementation we are working on
+    if (XMSS_N == 32) {
+        // This has to use unaligned accesses. Otherwise we get a 
+        // "variable allocation: bad range alignment" error
+
+        out[:u64 0] = in.[:u64 0]; // copies in[0..7]
+        out[:u64 1] = in.[:u64 1 * 8]; // copies in[8..15]
+        out[:u64 2] = in.[:u64 2 * 8]; // copies in[16..23]
+        out[:u64 3] = in.[:u64 3 * 8]; // copies in[24..31]
+    } else {
+        reg u64 i = 0;
+        while (i < XMSS_N) {
+            out[i] = in[i];
+            i += 1;
+        }
+    }
+    return out;
+}
+
+// Same as copy_nbytes but the unaligned accesses are on the left side of = 
+// This function is inlined because if is only used once
+inline
+fn copy_nbytes_unaligned_left (reg ptr u8[XMSS_N] out in) -> reg ptr u8[XMSS_N] {
+    // true for the implementation we are working on
+    if (XMSS_N == 32) {
+        // This has to use unaligned accesses. Otherwise we get a 
+        // "variable allocation: bad range alignment" error
+
+        out.[:u64 0*8] = in[:u64 0]; // copies in[0..7]
+        out.[:u64 1*8] = in[:u64 1]; // copies in[8..15]
+        out.[:u64 2*8] = in[:u64 2]; // copies in[16..23]
+        out.[:u64 3*8] = in[:u64 3]; // copies in[24..31]
+    } else {
+        reg u64 i = 0;
+        while (i < XMSS_N) {
+            out[i] = in[i];
+            i += 1;
+        }
+    }
+    return out;
+}
+
+// This is different than memcpy_u8pu8_n::_x_memcpy_u8pu8 because it uses a 
+// unaligned accesess. We use this when the compiler rejects the function
+// with the aligned access
+//
+// This function is inline because it is only used once
+inline
+fn copy_nbytes_from_ptr(
+    reg u64 out_ptr,
+    reg u64 offset,
+    reg ptr u8[XMSS_N] in
+) -> reg u64
+{
+    if (XMSS_N == 32 && XMSS_PADDING_LEN == 32) {
+        inline int i;
+
+        for i=0 to 4 { 
+            [:u64 out_ptr + offset + 8*i] = in.[:u64 8*i]; 
+        }
+
+    } else {
+        reg u64 i = 0;
+        
+        while (i < XMSS_N) {
+            [:u8 out_ptr + offset] = in[i];
+            offset += 1;
+            i += 1;
+        }
+    }
+
+    return out_ptr;
+}

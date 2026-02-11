@@ -1,0 +1,21 @@
+from XMSS require "sha256/sha256_in_ptr/sha256_in_ptr.jinc"
+
+namespace hash_plen_n_32 {
+    param int INLEN = XMSS_PADDING_LEN + XMSS_N + 32;
+    from XMSS require "sha256/sha256_array/sha256_array.jinc"
+}
+
+namespace hash_plen_2n_32 {
+    param int INLEN = XMSS_PADDING_LEN + 2*XMSS_N + 32;
+    from XMSS require "sha256/sha256_array/sha256_array.jinc"
+}
+
+namespace hash_plen_2n {
+    param int INLEN = XMSS_PADDING_LEN + 2*XMSS_N;
+    from XMSS require "sha256/sha256_array/sha256_array.jinc"
+}
+
+namespace hash_plen_3n {
+    param int INLEN = XMSS_PADDING_LEN + 3*XMSS_N;
+    from XMSS require "sha256/sha256_array/sha256_array.jinc"
+}
