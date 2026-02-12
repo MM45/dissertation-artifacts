@@ -46,5 +46,13 @@ clobber: clean
 
 FORCE:
 
+## Help
+help:
+	@printf "\n"
+	@printf "Usage:\n"
+	@printf "The primary entry point is the Makefile in the parent directory (impleqv/).\n"
+	@printf "Run 'make help' there for available targets and documentation.\n\n"
+
 ## Special
 .PHONY: check clean dry-clean clobber FORCE
+.PHONY: help

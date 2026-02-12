@@ -3,10 +3,9 @@
 This directory contains the specification-level security proofs for XMSS
 (`xmss/`) and SPHINCS<sup>+</sup> (`sphincsplus/`).
 
-The developments have been verified with EasyCrypt release
-[r2026.02](https://github.com/EasyCrypt/easycrypt/releases/tag/r2026.02),
-using SMT solvers Z3 4.13.4 and Alt-Ergo 2.6.0, as specified in
-`easycrypt.project`.
+The developments have been verified with [EasyCrypt release
+r2026.02](https://github.com/EasyCrypt/easycrypt/releases/tag/r2026.02), using
+SMT solvers Alt-Ergo 2.6.0 and Z3 4.13.4, as specified in `easycrypt.project`.
 
 ## Building, Running, and Testing
 
