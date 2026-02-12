@@ -1,8 +1,0 @@
-.vscode
-.idea/
-
-venv/
-
-proof/extraction/*.ec
-proof/common/*.ec
-!proof/common/Array8.ec

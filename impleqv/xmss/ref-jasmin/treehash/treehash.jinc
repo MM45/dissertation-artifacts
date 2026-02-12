@@ -178,7 +178,6 @@ fn __treehash(
     // XMSS_N is always a multiple of 8 (n \in {24, 32, 64}) so we can copy 64 bits at a time (32/4 = 8)
     // This is stupid because both branches are the same, but 
     // having 4 instead of XMSS_N/8 is simplifies the proof
-    // TODO: Fix this later
     if XMSS_N % 8 == 0 {
         for j=0 to XMSS_N/8 {
             root.[:u64 8*j] = _stack[:u64 j];

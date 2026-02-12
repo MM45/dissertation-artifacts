@@ -99,8 +99,6 @@ declare axiom Sverify_stateless:
   equiv[ S.verify ~ S.verify: ={arg} ==> ={res} ].
 
 (* Pseudo-Interactive EUF-RMA oracles *)
-(** TODO: This is overengineered—pre-sample all messages, then
-          carefully craft the invariant on secret keys **)
 local module (O_RMA_Lazy : Oracle_RMA) (S : Scheme) = {
   var sk    : sk_t
 

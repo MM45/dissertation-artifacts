@@ -207,8 +207,6 @@ fn __new_compute_root(
         t = leaf_idx; t >>= tree_height & 31;
         t &= 1;
 
-        // TODO: t probably needs to be declassified
-
         // set the input buffer of thash 
         if (t == 0) {
             // node || auth[k]
@@ -429,7 +427,7 @@ fn __xmssmt_core_sign_open(
     node_addr = __set_type(node_addr, XMSS_ADDR_TYPE_HASHTREE);
 
     // *mlen = smlen - params->sig_bytes;
-    t64 = smlen; t64 -= XMSS_SIG_BYTES; // TODO: Reuse this value 
+    t64 = smlen; t64 -= XMSS_SIG_BYTES;
     (u64) [mlen_ptr] = t64;
 
     // idx = bytes_to_ull(sm, params->index_bytes);

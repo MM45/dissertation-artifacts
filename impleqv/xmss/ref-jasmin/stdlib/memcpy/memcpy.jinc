@@ -8,7 +8,6 @@ fn __memcpy_u8u8_offset(
 ) -> reg ptr u8[XMSS_WOTS_SIG_BYTES]
 {
     reg u64 i;
-    /* TODO: Copiar 64bits de cada vez */
     i = 0;
     while (i < XMSS_N) {
         out[offset] = in[i];
@@ -73,7 +72,6 @@ fn __memcpy_u8pu8p(
     reg u64 bytes
 )
 {
-    // TODO: Copy u64 and only then u8
     reg u64 i = 0;
     
     while(i < bytes) {

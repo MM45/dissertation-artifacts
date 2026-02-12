@@ -48,4 +48,3 @@ FORCE:
 
 ## Special
 .PHONY: check clean dry-clean clobber FORCE
-.NOTPARALLEL:
