@@ -1,13 +1,13 @@
 # Implementation and Functional Equivalence
 
 This directory contains the implementation and functional equivalence proofs for
-XMSS (`xmss/`).
+XMSS (`xmss/`).  
 
-The developments have been verified with [EasyCrypt release
-r2026.02](https://github.com/EasyCrypt/easycrypt/releases/tag/r2026.02), the
-EasyCrypt library included with [Jasmin's compiler release
-2025.06](https://gitlab.com/jasmin-lang/jasmin-compiler/-/tree/release-2025.06)
-using SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4, as specified in
+The development has been verified with
+[EasyCrypt r2026.02](https://github.com/EasyCrypt/easycrypt/releases/tag/r2026.02),
+using the EasyCrypt library distributed with
+[Jasmin’s compiler release 2025.06](https://gitlab.com/jasmin-lang/jasmin-compiler/-/tree/release-2025.06),
+and the SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4, as specified in
 `easycrypt.project`.
 
 ## Comparison to Original Artifact
@@ -15,7 +15,7 @@ using SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4, as specified in
 The original development additionally included unit tests and benchmarking
 infrastructure for the concrete implementation. These components were primarily
 contributed by co-authors and do not constitute a central contribution of the
-dissertation, and so are excluded here.
+dissertation, and so are excluded here.  
 
 While the implementation itself is likewise not the primary focus of the
 dissertation, it is included here (`xmss/ref-jasmin/`) for reference and to
@@ -46,9 +46,9 @@ describes installation and solver configuration. More detailed instructions are
 provided in the
 [INSTALL.md](https://github.com/EasyCrypt/easycrypt/blob/r2026.02/INSTALL.md).
 
-For Jasmin's compiler, only its EasyCrypt library (`eclib/`) must be added to
+For Jasmin's compiler, it suffices to add its EasyCrypt library (`eclib/`) to
 EasyCrypt’s load path under the logical name `Jasmin`. This can be achieved, for
-example, by adding the following to the global EasyCrypt configuration file:
+example, by adding the following to the EasyCrypt configuration file:
 ```config
 [general]
 idirs = Jasmin:/path/to/jasmin-compiler/eclib
