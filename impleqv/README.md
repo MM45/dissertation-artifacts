@@ -1,4 +1,4 @@
-# Specification-level Security
+# Implementation and Functional Equivalence
 
 This directory contains the implementation and functional equivalence proofs for
 XMSS (`xmss/`).
