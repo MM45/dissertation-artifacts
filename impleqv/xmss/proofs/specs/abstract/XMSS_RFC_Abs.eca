@@ -98,9 +98,6 @@ module TreeHash = {
       address <- set_ltree_addr address (s + i);
 
       (* compress the WOTS public key into a single N-byte value *)
-      (* TODO: Replace ltree with THF corresponding to `pkco` in security spec
-      node <@ LTree.ltree(pk, address, pub_seed);
-      *)
       node <- ltree pub_seed address pk;
 
       stack <- put stack (to_uint offset) node; (* Push the node onto the stack *)
@@ -121,9 +118,7 @@ module TreeHash = {
 
           node0 <- nth nbytes_witness stack (to_uint (offset - W64.of_int 2));
           node1 <- nth nbytes_witness stack (to_uint (offset - W64.one));
-          (* TODO: Replace rand_hash with THF corresponding to `trh` in security spec
-          new_node <@ Hash.rand_hash(node0, node1, pub_seed, address);
-          *)
+
           new_node <- rand_hash pub_seed address node0 node1;
 
           stack <- put stack (to_uint (offset - W64.of_int 2)) new_node; (* push new node onto the stack *)
@@ -205,8 +200,7 @@ module RootFromSig = {
 
     address <- set_type address 1;
     address <- set_ltree_addr address (W32.to_uint idx_sig);
-    (* TODO: Replace ltree with THF corresponding to `pkco` in security spec
-    nodes0 <@ LTr.ltree(pk_ots, address, _seed); *)
+
     nodes0 <- ltree _seed address pk_ots;
 
     address <- set_type address 2;
@@ -221,18 +215,14 @@ module RootFromSig = {
         address <- set_tree_index address (index %/ 2);
 
         auth_k <- nth witness (AuthPath.val auth) k;
-        (* TODO: Replace rand_hash with THF corresponding to `trh` in security spec
-        nodes1 <@ Hash.rand_hash (nodes0, auth_k, _seed, address);
-        *)
+
         nodes1 <- rand_hash _seed address nodes0 auth_k;
       } else {
         index <- get_tree_index address;
         address <- set_tree_index address ((index - 1) %/ 2);
 
         auth_k <- nth witness (AuthPath.val auth) k;
-        (* TODO: Replace rand_hash with THF corresponding to `trh` in security spec
-        nodes1 <@ Hash.rand_hash (auth_k, nodes0, _seed, address);
-        *)
+
         nodes1 <- rand_hash _seed address auth_k nodes0;
       }
 
@@ -311,17 +301,11 @@ module XMSS_RFC_Abs (H_msg : Oracle) = {
 
     idx_bytes <- NBytes.insubd (toByte idx n);
 
-    (* TODO: Replace with KHF corresponding to mkg in security spec
-    _R <@ Hash.prf(idx_bytes, sk_prf);
-    *)
     _R <- prf sk_prf idx_bytes;
 
     root <- sk.`sk_root;
     t <- ThreeNBytesBytes.insubd (NBytes.val _R ++ NBytes.val root ++ NBytes.val idx_bytes);
 
-    (* TODO: Replace H_msg with relevant RO
-    _M' <- H_msg t m;
-    *)
     _M' <@ H_msg.o((t, m));
 
     (ots_sig, auth) <@ TreeSig.treesig(_M', sk, idx, address);
@@ -351,10 +335,6 @@ module XMSS_RFC_Abs (H_msg : Oracle) = {
     root <- pk.`pk_root;
     _R <- s.`r;
     t <- ThreeNBytesBytes.insubd (NBytes.val _R ++ NBytes.val root ++ NBytes.val idx_bytes);
-
-    (* TODO: Replace H_msg with relevant RO
-    _M' <- H_msg t m;
-    *)
     _M' <@ H_msg.o((t, m));
 
     node <@ RootFromSig.rootFromSig(idx_sig, sig_ots, auth, _M', _seed, address);

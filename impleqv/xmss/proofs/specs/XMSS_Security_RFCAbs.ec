@@ -530,7 +530,6 @@ qed.
 lemma Eqv_WOTS_pkgen_ll  :
  islossless WOTS.pkGen.
 proof.
-(** FIXME: Really? **)
 proc; sp.
 seq 1: (i = 0)=> //.
 + conseq (: true)=> //.
@@ -2438,7 +2437,6 @@ rewrite !(nth_map witness) //; 1:smt(LenNBytes.valP).
 by rewrite LenNBytes.insubdK 1:/# eq_nth.
 qed.
 
-(* TODO: check usage; would it be better phrased as an equivalence? *)
 phoare leaves_correct _ps _ss  _ad :
  [ FL_XMSS_TW_ES.leaves_from_sspsad :
       arg = (_ss, _ps, _ad)
@@ -3887,7 +3885,6 @@ module (S : Scheme_RO) (O : RO.POracle) = {
 
    proc sign = XMSS_RFC_Abs(RFC_O(O)).sign
 
-   (* THIS IS A HACK BECAUSE RFC SHOULD BE CHECKING FOR IDX RANGE.  *)
    proc verify(pk : xmss_pk, m : msg_t, sig : sig_t) : bool  = {
        var r;
        r <@ XMSS_RFC_Abs(RFC_O(O)).verify(pk,m,sig);

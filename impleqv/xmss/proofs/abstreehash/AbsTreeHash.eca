@@ -817,7 +817,7 @@ rewrite andbC -andaE; split.
       rewrite /bs size_int2bs ler_maxr 1:/#; split; 1: smt().
       by rewrite nth_mkseq 1:/# /= pdiv_small.
     by rewrite -index_mem -/k; smt(size_int2bs).
-  - move=> l /mapP[] [v' i'] /= [] hin <<-. (* FIXME: refactor *)
+  - move=> l /mapP[] [v' i'] /= [] hin <<-.
     rewrite size_zip size_map size_take_condle // ifT 1:/#.
     rewrite size_range ler_maxr 1:/# minzz.
     by move/(map_f snd): hin => /=; apply: hlt.
