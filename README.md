@@ -10,7 +10,7 @@ developments corresponding to the original papers included in the dissertation
 and serves as the single archival reference point for all formalizations and
 implementations produced as part of this work, excluding some early components
 that were later integrated in [EasyCrypt's standard
-library](https://github.com/EasyCrypt/easycrypt/theories)).  
+library](https://github.com/EasyCrypt/easycrypt/tree/main/theories).  
 
 Release `v1.0` (the current version) is archived on Zenodo and assigned a DOI:
 _TODO create and insert DOI_
@@ -43,7 +43,7 @@ self-contained distribution of all dissertation artifacts. Each artifact
 (or closely related set of artifacts) is structured to support reproducible
 verification.  
 
-In particular, the top-level directories `specsec/` and `impleqv/` each contain:
+In particular, the top-level directories `impleqv/` and `specsec/` each contain:
 - a `Dockerfile` defining a consistent verification environment,
 - a `Makefile` providing standardized verification targets, and
 - a dedicated `README` with usage instructions.
