@@ -44,7 +44,7 @@ docker-shell: docker-build
 check: check-xmss
 check-xmss: check-xmss-default
 
-check-%: check-xmss-%
+check-%: check-xmss-% ; @:
 
 check-xmss-%: FORCE
 	@echo "Entering $(XMSS_DIR) directory to check $*..."

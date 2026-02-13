@@ -29,9 +29,9 @@ provided in the
 
 ### Docker
 
-Run the default verification tests inside the Docker environment,
-either for both developments or individually (in each case, the default
-verifies the entire development):
+Run the default verification tests inside the Docker environment, either for
+both developments or individually (in each case, the entire development is
+verified; no additional dedicated test cases are defined):
 ```shell
 make docker-check       # Both XMSS and SPHINCS+
 make docker-check-xmss  # XMSS only
@@ -49,9 +49,9 @@ approach (see below).
 
 ### Native
 
-Run the default verification tests,
-either for both developments or individually (in each case, the default
-verifies the entire development):
+Run the default verification tests, either for both developments or individually
+(in each case, the entire development is verified; no additional
+dedicated test cases are defined).
 ```shell
 make check          # Both XMSS and SPHINCS+
 make check-xmss     # XMSS only
