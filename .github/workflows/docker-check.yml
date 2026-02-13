@@ -1,0 +1,32 @@
+name: Check all developments in Docker via 'make docker-check' (default verification tests)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docker-check:
+    name: docker-check (${{ matrix.dev }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dev:
+          - impleqv
+          - specsec
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ matrix.dev }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run docker-check
+        run: make DOCKER_TTY= docker-check
