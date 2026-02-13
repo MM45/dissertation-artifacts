@@ -1,7 +1,7 @@
 # Specification Security
 
 This directory contains the specification-level security proofs for XMSS
-(`xmss/`) and SPHINCS<sup>+</sup> (`sphincsplus/`).
+(`xmss/`) and SPHINCS<sup>+</sup> (`sphincsplus/`).  
 
 The developments have been verified with [EasyCrypt release
 r2026.02](https://github.com/EasyCrypt/easycrypt/releases/tag/r2026.02), using
@@ -60,7 +60,7 @@ make check-sp       # SPHINCS+ only
 
 Beyond running tests, these also store test reports in the `reports/` directory
 of the respective development; this directory is created automatically if it
-does not exist yet.
+does not exist yet.  
 
 Remove EasyCrypt’s cached verification artifacts (`.eco` files),
 either across all developments or for an individual one:
@@ -87,7 +87,7 @@ make help
 
 `make` variables can be overridden (see the `Makefile` in this directory as well
 as those in `xmss/` and `sphincsplus/`). This allows customization of the setup
-(e.g., binary paths) or adjustment of parallelism to speed up verification.
+(e.g., binary paths) or adjustment of parallelism to speed up verification.  
 
 Note, however, that modifying these parameters may affect stability. In
 particular, increased parallelism can trigger solver timeouts or related

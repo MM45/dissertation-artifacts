@@ -28,5 +28,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Print Docker version and information
+        run: |
+          docker version
+          docker info
+
       - name: Run docker-check
         run: make DOCKER_TTY= docker-check

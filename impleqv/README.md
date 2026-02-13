@@ -15,7 +15,7 @@ and the SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4, as specified in
 The original development additionally included unit tests and benchmarking
 suites for the concrete implementation. These components were primarily
 developed by co-authors and are not central contributions of the dissertation;
-accordingly, they are excluded here.
+accordingly, they are excluded here.  
 
 The implementation itself was likewise largely developed by co-authors and is
 not the primary focus of this work. It is nevertheless included
@@ -45,7 +45,7 @@ For the native approach, the [EasyCrypt README.md for
 r2026.02](https://github.com/EasyCrypt/easycrypt/blob/r2026.02/README.md)
 describes installation and solver configuration. More detailed instructions are
 provided in the
-[INSTALL.md](https://github.com/EasyCrypt/easycrypt/blob/r2026.02/INSTALL.md).
+[INSTALL.md](https://github.com/EasyCrypt/easycrypt/blob/r2026.02/INSTALL.md).  
 
 For Jasmin's compiler, it suffices to add its EasyCrypt library (`eclib/`) to
 EasyCrypt’s load path under the logical name `Jasmin`. This can be achieved, for
@@ -63,7 +63,7 @@ make docker-check
 ```
 
 See the section on the native approach below for details on what the default
-verification tests cover.
+verification tests cover.  
 
 To explore and interact with the repository inside the container, start an interactive shell:
 ```shell
@@ -94,7 +94,7 @@ sanity-checking of setup and environment files. Concretely, they include the
 files in `xmss/proofs/correctness/`, `xmss/proofs/specs/`, and
 `xmss/proofs/security/`, but not those in `xmss/proofs/common/` and
 `xmss/proofs/extraction/`. To verify all components, use `make check-all`; to
-verify only the setup and environment files, use `make check-setup`.
+verify only the setup and environment files, use `make check-setup`.  
 
 Remove EasyCrypt’s cached verification artifacts (`.eco` files),
 either across all developments or for an individual one:
@@ -117,7 +117,7 @@ make help
 
 `make` variables can be overridden (see the `Makefile` in this directory as well
 as that in `xmss/`). This allows customization of the setup (e.g., binary paths)
-or adjustment of parallelism to speed up verification.
+or adjustment of parallelism to speed up verification.  
 
 Note, however, that modifying these parameters may affect stability. In
 particular, increased parallelism can trigger solver timeouts or related
