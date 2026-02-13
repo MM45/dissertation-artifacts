@@ -7,8 +7,7 @@ The development has been verified with
 [EasyCrypt r2026.02](https://github.com/EasyCrypt/easycrypt/releases/tag/r2026.02),
 using the EasyCrypt library distributed with
 [Jasmin’s compiler release 2025.06](https://gitlab.com/jasmin-lang/jasmin-compiler/-/tree/release-2025.06),
-and the SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4, as specified in
-`easycrypt.project`.
+and the SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4.
 
 ## Comparison to Original Artifact
 
