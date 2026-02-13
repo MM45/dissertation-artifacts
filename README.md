@@ -12,9 +12,6 @@ implementations produced as part of this work, excluding some early components
 that were later integrated in [EasyCrypt's standard
 library](https://github.com/EasyCrypt/easycrypt/tree/main/theories).  
 
-Release `v1.0` (the current version) is archived on Zenodo and assigned a DOI:
-_TODO create and insert DOI_
-
 ## Mapping the Artifacts
 
 The artifacts contained in this repository correspond to specific dissertation

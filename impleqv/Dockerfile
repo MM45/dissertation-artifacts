@@ -12,7 +12,7 @@ FROM ${EC_IMAGE}
 
 # Create relevant directories and set ownership appropriately
 RUN mkdir -p /home/charlie/src /home/charlie/.config/easycrypt /home/charlie/work \
- && chown -R charlie:root /home/charlie/src /home/charlie/work /home/charlie/.config
+ && chown -R charlie:root /home/charlie/src /home/charlie/.config /home/charlie/work
 
 # Clone Jasmin's compiler repository (release 2025.06)
 RUN git clone --branch release-2025.06 --single-branch \

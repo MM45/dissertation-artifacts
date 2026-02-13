@@ -1,4 +1,4 @@
-# Implementation and Functional Equivalence
+# Implementation Functional Equivalence
 
 This directory contains the implementation and functional equivalence proofs for
 XMSS (`xmss/`).  
@@ -13,18 +13,19 @@ and the SMT solvers Alt-Ergo 2.6.0, CVC4 1.8, and Z3 4.13.4, as specified in
 ## Comparison to Original Artifact
 
 The original development additionally included unit tests and benchmarking
-infrastructure for the concrete implementation. These components were primarily
-contributed by co-authors and do not constitute a central contribution of the
-dissertation, and so are excluded here.  
+suites for the concrete implementation. These components were primarily
+developed by co-authors and are not central contributions of the dissertation;
+accordingly, they are excluded here.
 
-While the implementation itself is likewise not the primary focus of the
-dissertation, it is included here (`xmss/ref-jasmin/`) for reference and to
-facilitate verification that the corresponding EasyCrypt extractions
-(`xmss/proofs/extraction/`) correctly capture the implemented code.
+The implementation itself was likewise largely developed by co-authors and is
+not the primary focus of this work. It is nevertheless included
+(`xmss/ref-jasmin/`) for reference and to facilitate verification that the
+corresponding EasyCrypt extractions (`xmss/proofs/extraction/`) faithfully
+capture the implemented code.
 
 ## Building, Running, and Testing
 
-You can run this development either via Docker or natively (if you have the
+You can run/test this development either via Docker or natively (if you have the
 correct EasyCrypt + Jasmin + solver installation).
 
 ### Prerequisites

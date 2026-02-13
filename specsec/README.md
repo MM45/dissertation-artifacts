@@ -1,4 +1,4 @@
-# Specification-level Security
+# Specification Security
 
 This directory contains the specification-level security proofs for XMSS
 (`xmss/`) and SPHINCS<sup>+</sup> (`sphincsplus/`).
@@ -9,7 +9,7 @@ SMT solvers Alt-Ergo 2.6.0 and Z3 4.13.4, as specified in `easycrypt.project`.
 
 ## Building, Running, and Testing
 
-You can run this development either via Docker or natively (if you have the
+You can run/test this development either via Docker or natively (if you have the
 correct EasyCrypt + solver installation).
 
 ### Prerequisites
@@ -33,9 +33,9 @@ Run the default verification tests inside the Docker environment,
 either for both developments or individually (in each case, the default
 verifies the entire development):
 ```shell
-make docker-check # Both XMSS and SPHINCS+
-make docker-check-xmss # XMSS only
-make docker-check-sp # SPHINCS+ only
+make docker-check       # Both XMSS and SPHINCS+
+make docker-check-xmss  # XMSS only
+make docker-check-sp    # SPHINCS+ only
 ```
 
 To explore and interact with the repository inside the container, start an interactive shell:
@@ -53,9 +53,9 @@ Run the default verification tests,
 either for both developments or individually (in each case, the default
 verifies the entire development):
 ```shell
-make check # Both XMSS and SPHINCS+
-make check-xmss # XMSS only
-make check-sp # SPHINCS+ only
+make check          # Both XMSS and SPHINCS+
+make check-xmss     # XMSS only
+make check-sp       # SPHINCS+ only
 ```
 
 Beyond running tests, these also store test reports in the `reports/` directory
@@ -65,16 +65,16 @@ does not exist yet.
 Remove EasyCrypt’s cached verification artifacts (`.eco` files),
 either across all developments or for an individual one:
 ```shell
-make clean # Both XMSS and SPHINCS+
-make clean-xmss # XMSS only
-make clean-sp # SPHINCS+ only
+make clean          # Both XMSS and SPHINCS+
+make clean-xmss     # XMSS only
+make clean-sp       # SPHINCS+ only
 ```
 
 Additionally remove the respective `reports/` directory:
 ```shell
-make clobber # Both XMSS and SPHINCS+
-make clobber-xmss # XMSS only
-make clobber-sp # SPHINCS+ only
+make clobber        # Both XMSS and SPHINCS+
+make clobber-xmss   # XMSS only
+make clobber-sp     # SPHINCS+ only
 ```
 
 ### Help with Make

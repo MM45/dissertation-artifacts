@@ -88,7 +88,7 @@ help:
 	@printf "  %-18s %s\n" "docker-shell"      "Start an interactive shell in Docker (instead of running tests)."
 	@printf "  %-18s %s\n" "check-<name>"      "Run a specific EasyCrypt test."
 	@printf "  %-18s %s\n" "dry-clean"         "Show what 'make clean' would remove."
-	@printf "  %-18s %s\n" "clobber"           "clean + remove report directories."
+	@printf "  %-18s %s\n" "clobber"           "clean + remove report directory."
 
 ## Special
 .PHONY: \
