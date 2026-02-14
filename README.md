@@ -1,5 +1,7 @@
 # Dissertation Artifacts
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18640217.svg)](https://doi.org/10.5281/zenodo.18640217)
+
 This repository accompanies the dissertation *Toward Machine-Checked
 Post-Quantum Cryptography: Digital Signature Schemes and Key Encapsulation
 Mechanisms* by M.C.F.H.P. Meijers and contains the complete set of underlying
