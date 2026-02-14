@@ -1,0 +1,2 @@
+# Prevent every file/directory starting with '.git' to be excluded from archive
+.git* export-ignore
