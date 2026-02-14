@@ -1,6 +1,6 @@
 # Dissertation Artifacts
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18640217.svg)](https://doi.org/10.5281/zenodo.18640217)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18641193.svg)](https://doi.org/10.5281/zenodo.18641193)
 
 This repository accompanies the dissertation *Toward Machine-Checked
 Post-Quantum Cryptography: Digital Signature Schemes and Key Encapsulation
