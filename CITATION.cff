@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: Dissertation Artifacts (M.C.F.H.P. Meijers)
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - family-names: Meijers
+    given-names: Matthias
+    orcid: 'https://orcid.org/0000-0002-5351-991X'
+    affiliation: Eindhoven University of Technology
+    email: research@mmeijers.com
+abstract: >-
+  Artifacts accompanying the dissertation "Toward
+  Machine-Checked Post-Quantum Cryptography: Digital
+  Signature Schemes and Key Encapsulation Mechanisms" by
+  M.C.F.H.P. Meijers.
