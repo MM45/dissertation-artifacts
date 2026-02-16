@@ -95,13 +95,12 @@ files in `xmss/proofs/correctness/`, `xmss/proofs/specs/`, and
 `xmss/proofs/extraction/`. To verify all components, use `make check-all`; to
 verify only the setup and environment files, use `make check-setup`.  
 
-Remove EasyCrypt’s cached verification artifacts (`.eco` files),
-either across all developments or for an individual one:
+Remove EasyCrypt’s cached verification artifacts (`.eco` files):
 ```shell
 make clean
 ```
 
-Additionally remove the respective `reports/` directory:
+Additionally remove the `reports/` directory:
 ```shell
 make clobber
 ```
